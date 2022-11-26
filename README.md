@@ -64,10 +64,27 @@ developing your own process.
 
   - How I debugged:
 
+  * created a new toy by filling in the form and hitting submit button
+  * got a response in the console 500 - internal server error
+  * went to the servers terminal and found an hint that there was an uninitialized constant ToysController::Toys
+  * found out that we were creating a new toy from Toys(plural) instead of Toy(singular)
+
 - Update the number of likes for a toy
 
   - How I debugged:
 
+  * tried incrementing the likes
+  * found a 204 no content exception found in the controller update action
+  * i had to render json of the updated toy to remove the error
+
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+
+  * i tried deleting a toy from the frontend
+  * i didn't find any response and had a look at the browser console
+  * found out that an exception occurred in action controller
+  * ActionController: :RoutingError
+  * had a look at the server terminal ad found out that there was no route matching delete
+  * configured the routes resource to contain destroy macros
+  * finally everything was working
